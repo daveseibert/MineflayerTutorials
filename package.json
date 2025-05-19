@@ -1,0 +1,14 @@
+{
+  "name": "flayer",
+  "version": "1.0.0",
+  "description": "Here you can easily find each of my Mineflayer tutorials.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dave",
+  "license": "ISC",
+  "dependencies": {
+    "mineflayer": "^4.26.0"
+  }
+}
