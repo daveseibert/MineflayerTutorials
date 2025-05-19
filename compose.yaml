@@ -22,4 +22,12 @@ services:
       MINECRAFT_USERNAME: hello_world
     ports:
       - "8008:8008"
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./main.js
+          target: /app/main.js
+        - action: sync+restart
+          path: ./lib
+          target: /app/lib
 
