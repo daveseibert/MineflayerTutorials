@@ -12,8 +12,12 @@ name: flayer
 
 services:
   server:
+    image: pi2.local:5000/bots/party
     build:
       context: .
+      platforms:
+        - "linux/amd64"
+        - "linux/arm64"
     environment:
       NODE_ENV: production
       MINECRAFT_HOST: pi2.local
