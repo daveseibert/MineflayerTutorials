@@ -173,10 +173,35 @@ class LookingBot extends MCBot {
 
 }
 
+class JumpingBot extends MCBot {
+    chatLog(username, ...msg) {
+        if (!botNames.includes(username)) {
+            this.log(chalk.ansi256(98)(`<${username}>`), ...msg)
+
+            let localPlayers = this.bot.players;
+            let playerLocation = localPlayers[username].entity.position;
+
+            this.log(`Player ${username} found at ${playerLocation}`);
+            this.bot.lookAt(playerLocation);
+            this.runAndJump();
+        }
+    }
+
+    async runAndJump() {
+        this.bot.setControlState('forward', true);
+        await this.bot.waitForTicks(1);
+        this.bot.setControlState('sprint', true);
+        this.bot.setControlState('jump', true);
+
+        await this.bot.waitForTicks(11);
+        this.bot.clearControlStates();
+    }
+}
+
 let bots = [];
 let botNames = [];
 for (let i = 0; i < 3; i++) {
     let name = `Hello_world_${i}`
-    bots.push(new LookingBot(name));
+    bots.push(new JumpingBot(name));
     botNames.push(name)
 };
